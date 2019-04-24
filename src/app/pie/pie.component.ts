@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PieComponent implements OnInit {
 
+  public autor: any = {nombre:'Greenaall', apellido: 'Antequera'};
+
   constructor() { }
 
   ngOnInit() {
   }
-
+ 
 }

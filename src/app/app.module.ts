@@ -14,6 +14,7 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientesComponent } from './clientes/clientes.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuVerticalComponent } from './menu-vertical/menu-vertical.component';
 
 
 
@@ -21,6 +22,7 @@ const rutas: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
   {path: 'formulario', component:FormularioComponent },
   {path: 'inicio', component:InicioComponent },
+  {path: 'MenuVertical', component:MenuVerticalComponent },
   {path:'clientes', component: ClientesComponent}
 ];
 
@@ -31,7 +33,8 @@ const rutas: Routes = [
     PieComponent,
     InicioComponent,
     FormularioComponent,
-    ClientesComponent
+    ClientesComponent,
+    MenuVerticalComponent
     ],
   imports: [
     BrowserModule,

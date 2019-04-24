@@ -21,6 +21,7 @@ import swal from 'sweetalert2';
 export class FormularioComponent implements OnInit {
 
   contacto = new ContactModel();
+  private titulo:string = "Crear Cliente"
   constructor(private miServicio: ServicioFormulario) { }
   //constructor(private sendServices: SendEmailService, public snackBar: MatSnackBar) { }
 
