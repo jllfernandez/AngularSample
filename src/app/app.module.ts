@@ -15,6 +15,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClientesComponent } from './clientes/clientes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuVerticalComponent } from './menu-vertical/menu-vertical.component';
+import { ValidationComponent } from './validation/validation.component';
+import { HijosComponent } from './hijos/hijos.component';
+import { BrothersComponent } from './brothers/brothers.component';
 
 
 
@@ -23,7 +26,10 @@ const rutas: Routes = [
   {path: 'formulario', component:FormularioComponent },
   {path: 'inicio', component:InicioComponent },
   {path: 'MenuVertical', component:MenuVerticalComponent },
-  {path:'clientes', component: ClientesComponent}
+  {path:'clientes', component: ClientesComponent},
+  {path:'hijos', component: HijosComponent},
+  {path:'brothers', component: BrothersComponent},
+  {path:'validation', component: ValidationComponent}
 ];
 
 @NgModule({
@@ -34,7 +40,10 @@ const rutas: Routes = [
     InicioComponent,
     FormularioComponent,
     ClientesComponent,
-    MenuVerticalComponent
+    MenuVerticalComponent,
+    ValidationComponent,
+    HijosComponent,
+    BrothersComponent
     ],
   imports: [
     BrowserModule,
