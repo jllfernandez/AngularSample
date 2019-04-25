@@ -2,13 +2,18 @@ import { Component, OnInit } from '@angular/core';
 
 //Models
 import { ContactModel } from '../models/ContactModel';
+import { Cliente } from '../models/Cliente';
+
 //services en angular
 import { ServicioFormulario } from '../servicios/servicioFormulario/ServicioFormulario';
+import { ServicioClientes } from '../servicios/servicioClientes/ServicioClientes';
 
 //material desing de angular
 import {MatSnackBar} from '@angular/material';
 // Esta linea fue agregada automaticamente pueden borrarlo
 import { NgForm } from '@angular/forms/src/directives/ng_form';
+
+import {Router, ActivatedRoute} from '@angular/router';
 
 import swal from 'sweetalert2';
 
@@ -20,44 +25,46 @@ import swal from 'sweetalert2';
 })
 export class FormularioComponent implements OnInit {
 
-  contacto = new ContactModel();
+  //contacto = new ContactModel();
+  clienteModel = new Cliente();
   private titulo:string = "Crear Cliente"
-  constructor(private miServicio: ServicioFormulario) { }
+  constructor(private miServicio: ServicioFormulario, private servicioCliente: ServicioClientes, private router: Router) { }
   //constructor(private sendServices: SendEmailService, public snackBar: MatSnackBar) { }
 
   ngOnInit() { 
   }
 
   onSubmit(f: NgForm){
-    this.callService(this.contacto, f);
+    this.callService(this.clienteModel, f);
 }
 //metodo de services
-callService(body:ContactModel, f: NgForm){
+callService(cli:Cliente, f: NgForm){
     
-  /*
-    this.sendServices.getResponseEmail(body).subscribe(
-        data => {
-            if(data){
-                this.snackBar.open("Gracias por el mensaje", "Correcto", {
-                    duration: 2000,
-                  });
-                  f.reset();
-            }
-            else{
-                this.snackBar.open(":(", "Error", {
-                    duration: 2000,
-                  });
-                  
-            }
-            
-        },
-        err => { this.snackBar.open("Algo fallo :/, correo: cesar@unprogramador.com", "ups", {
-            duration: 5000,
-          }); }
-      );*/
+  
       swal.fire("Good job!", "You clicked the button!", "success")
-      this.miServicio.execute(body);
+      this.miServicio.execute(cli);
+      
   
 }
+
+create(): void {
+  this.servicioCliente.createCliente(this.clienteModel).subscribe(clienteModel=> {this.router.navigate(['clientes'])
+    swal.fire('Nuevo cliente', `Cliente ${this.clienteModel.nombre} creado con éxito!`, 'success')
+  }
+  );
+}
+
+update():void{
+  this.servicioCliente.updateCliente(this.clienteModel)
+  .subscribe( clienteModel => {
+    this.router.navigate(['clientes'])
+    swal.fire('Cliente Actualizado', `Cliente ${clienteModel.nombre} actualizado con éxito!`, 'success')
+  }
+
+  )
+}
+
+
+
 
 }

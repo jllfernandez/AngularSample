@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HIJOS } from '../../servicioClientes/hijos.json';
+import { CLIENTES } from '../../servicioClientes/clientes.json';
 import { BROTHERS } from '../../servicioClientes/brothers.json';
 import { Father } from '../../../models/Father';
+import { Cliente } from '../../../models/Cliente';
+//import { ContactModel } from '../../../models/ContactModel';
 import { Observable } from 'rxjs'; 
 import { of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -36,6 +39,26 @@ export class HttpService {
       map(response => response as Cliente[])
     );*/
   }
+
+  create(novo: Father) : Observable<Father> {
+    console.log('Estoy creando ...' + (<Cliente>novo).nombre);
+    console.log('Estoy creando ...' + (<Cliente>novo).email);
+   return of(CLIENTES[0]);
+    //return this.http.post<Father>(this.urlEndPoint, cliente, {headers: this.httpHeaders})
+  }
+
+  update(novo: Father): Observable<Cliente>{
+    console.log('Estoy actualizando ...' + (<Cliente>novo).nombre);
+    console.log('Estoy actualizando ...' + (<Cliente>novo).email);
+   return of(CLIENTES[0]);
+  }
+
+  delete(id: number): Observable<Cliente>{
+    console.log('Estoy borrando ...' + id);
+   return of(CLIENTES[0]);
+  }
+
+
   /*
   getCliente(id): Observable<Cliente>{
     return this.http.get<Cliente>(`${this.urlEndPoint}/${id}`)

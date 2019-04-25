@@ -1,8 +1,14 @@
-export class Cliente {
+import { Father } from './Father';
+
+
+export class Cliente extends Father {
     id: number;
     nombre: string;
     apellido:string;
+    email:string;
     createAt:string;
-    email: string;
+    phone:string;
+    subject:string;
+    msn:string;
   
-  }
+    }
