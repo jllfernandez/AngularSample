@@ -7,6 +7,7 @@ import { Cliente } from '../models/Cliente';
 //services en angular
 import { ServicioFormulario } from '../servicios/servicioFormulario/ServicioFormulario';
 import { ServicioClientes } from '../servicios/servicioClientes/ServicioClientes';
+import { PruebaService } from '../servicios/prueba/prueba.service';
 
 //material desing de angular
 import {MatSnackBar} from '@angular/material';
@@ -25,11 +26,12 @@ import swal from 'sweetalert2';
 })
 export class FormularioComponent implements OnInit {
 
-  //contacto = new ContactModel();
   clienteModel = new Cliente();
   private titulo:string = "Crear Cliente"
-  constructor(private miServicio: ServicioFormulario, private servicioCliente: ServicioClientes, private router: Router) { }
-  //constructor(private sendServices: SendEmailService, public snackBar: MatSnackBar) { }
+
+  constructor(private miServicio: ServicioFormulario, private servicioCliente: ServicioClientes, 
+    private router: Router, private pruebaService: PruebaService) { }
+  
 
   ngOnInit() { 
   }
@@ -52,6 +54,10 @@ create(): void {
     swal.fire('Nuevo cliente', `Cliente ${this.clienteModel.nombre} creado con éxito!`, 'success')
   }
   );
+}
+
+prueba(): void {
+    this.pruebaService.execute();
 }
 
 update():void{

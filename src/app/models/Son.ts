@@ -1,7 +1,7 @@
 import { Father } from './Father';
 
 export class Son extends Father {
-    id: number;
+    //id: number;
     nombre: string;
     apellido:string;
     createAt:string;

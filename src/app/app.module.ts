@@ -18,6 +18,7 @@ import { MenuVerticalComponent } from './menu-vertical/menu-vertical.component';
 import { ValidationComponent } from './validation/validation.component';
 import { HijosComponent } from './hijos/hijos.component';
 import { BrothersComponent } from './brothers/brothers.component';
+import { PaginadorComponent } from './paginador/paginador.component';
 
 
 
@@ -29,7 +30,9 @@ const rutas: Routes = [
   {path:'clientes', component: ClientesComponent},
   {path:'hijos', component: HijosComponent},
   {path:'brothers', component: BrothersComponent},
-  {path:'validation', component: ValidationComponent}
+  {path:'validation', component: ValidationComponent},
+  {path: 'clientes/page/:id', component: ClientesComponent }
+
 ];
 
 @NgModule({
@@ -43,7 +46,8 @@ const rutas: Routes = [
     MenuVerticalComponent,
     ValidationComponent,
     HijosComponent,
-    BrothersComponent
+    BrothersComponent,
+    PaginadorComponent
     ],
   imports: [
     BrowserModule,

@@ -17,6 +17,11 @@ export class ServicioClientes {
     
     constructor(private servicioHttp: HttpService) { }
     
+    getClientesPaginados(page: number): Observable<any> {
+      return <Observable<any>>this.servicioHttp.getListadoPaginado();
+    }
+  
+
     getClientes(): Observable<Cliente[]> {
       return <Observable<Cliente[]>>this.servicioHttp.getListado();
     }

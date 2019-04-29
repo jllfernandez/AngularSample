@@ -2,7 +2,7 @@ import { Father } from './Father';
 
 
 export class Cliente extends Father {
-    id: number;
+    //id: number;
     nombre: string;
     apellido:string;
     email:string;

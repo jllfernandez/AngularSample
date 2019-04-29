@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HIJOS } from '../../servicioClientes/hijos.json';
 import { CLIENTES } from '../../servicioClientes/clientes.json';
+import { CLIENTES_PAGINADOS } from '../../servicioClientes/clientes_paginados.json';
 import { BROTHERS } from '../../servicioClientes/brothers.json';
 import { Father } from '../../../models/Father';
 import { Cliente } from '../../../models/Cliente';
@@ -25,6 +26,13 @@ export class HttpService {
 
   //constructor() { }
   constructor(private http: HttpClient) { }
+
+  getListadoPaginado(): Observable<any> {
+    return of(CLIENTES_PAGINADOS);
+    /*return this.http.get(this.urlEndPoint).pipe(
+      map(response => response as Cliente[])
+    );*/
+  }
 
   getListado(): Observable<Father[]> {
     return of(HIJOS);
