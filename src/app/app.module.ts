@@ -31,7 +31,7 @@ const rutas: Routes = [
   {path:'hijos', component: HijosComponent},
   {path:'brothers', component: BrothersComponent},
   {path:'validation', component: ValidationComponent},
-  {path: 'clientes/page/:id', component: ClientesComponent }
+  {path: 'clientes/page/:page', component: ClientesComponent }
 
 ];
 
