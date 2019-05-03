@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HIJOS } from '../../servicioClientes/hijos.json';
 import { CLIENTES } from '../../servicioClientes/clientes.json';
 import { CLIENTES_PAGINADOS } from '../../servicioClientes/clientes_paginados.json';
+import { USUARIOS_PAGINADOS } from '../../../models/usuarios_paginados.json';
 import { BROTHERS } from '../../servicioClientes/brothers.json';
 import { Father } from '../../../models/Father';
 import { Cliente } from '../../../models/Cliente';
@@ -11,9 +12,13 @@ import { of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-//import { of } from 'rxjs/observable/of';
-//import { of } from 'rxjs';
-//import 'rxjs/add/observable/of';
+const httpOptions = {
+  headers: new HttpHeaders({ 
+    'Access-Control-Allow-Origin':'*',
+    'Authorization':'authkey',
+    'userid':'1'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +27,16 @@ export class HttpService {
 
   private urlEndPoint: string = '';//'http://localhost:8080/api/clientes';
 
-  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
+  //private httpHeaders = new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin':'*'})
+
+  private header = new HttpHeaders().set('Access-Control-Allow-Origin','*')
+      .set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/json; charset=utf-8');
+      //.set('Authorization', localStorage.getItem("Token_Full").toString())
+      //.set('Authorization', 'Bearer ' + localStorage.getItem("Token_Full").toString());
+   
+  
 
   //constructor() { }
   constructor(private http: HttpClient) { }
@@ -34,11 +48,19 @@ export class HttpService {
     );*/
   }
 
+  getUsuariosPaginados(url:string): Observable<any> {
+    
+    return this.http.get<any>(url, { headers: this.header}).pipe(
+      map(response => response as any));
+  }
+
   getListado(): Observable<Father[]> {
     return of(HIJOS);
-    /*return this.http.get(this.urlEndPoint).pipe(
-      map(response => response as Cliente[])
-    );*/
+  }
+
+  getConsulta(url:string): Observable<any> {
+    return this.http.get(url, { headers: this.header}).pipe(
+      map(response => response as any));
   }
 
   getBrothers(): Observable<Father[]> {

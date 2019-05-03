@@ -25,10 +25,10 @@ export class ServicioHttp {
   constructor(private http: HttpClient) { }
 
   getClientes(): Observable<Cliente[]> {
-    return of(CLIENTES);
-    /*return this.http.get(this.urlEndPoint).pipe(
-      map(response => response as Cliente[])
-    );*/
+    //return of(CLIENTES);
+    return this.http.get(this.urlEndPoint).pipe(
+      map(response => response as any)//Cliente[])
+    );
   }
   /*
   getCliente(id): Observable<Cliente>{

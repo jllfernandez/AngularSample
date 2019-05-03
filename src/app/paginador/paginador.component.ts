@@ -10,13 +10,15 @@ export class PaginadorComponent implements OnInit, OnChanges {
 
 
   @Input() paginador: any;
+  @Input() tipo: string;
+
   paginas: number[];
   
   desde: number;
   hasta: number;
 
   constructor() { }
-
+  
   ngOnInit() {
     this.initPaginator();
   }
