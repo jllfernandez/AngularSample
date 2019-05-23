@@ -4,8 +4,6 @@ import { of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-import { Generic } from '../../models/Generic';
-
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +24,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   create(param: string, novo: any) : Observable<any> {
-    return this.http.post<Generic>(this.urlEndPoint + param, novo, {headers: this.headers})
+    return this.http.post<any>(this.urlEndPoint + param, novo, {headers: this.headers})
   }
 
   read(param:string): Observable<any> {
